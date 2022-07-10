@@ -13,7 +13,6 @@ fn main() -> io::Result<()> {
     if let Ok(files) = read_dir("jsons") {
         for file_name in files {
             let mut f = File::open(&file_name).expect("file not found");
-            println!("{:?}", f);
             let mut contents = String::new();
             f.read_to_string(&mut contents)?;
             let parent = serde_json::from_str::<Parent>(&contents).unwrap();
